@@ -1,0 +1,21 @@
+version: '3.3'
+
+services:
+
+  api:
+    container_name: raffle-api
+    build: .
+    ports:
+      - 8000:8000
+
+  database:
+    container_name: database_raffle
+    image: 'postgres:latest'
+    restart: always
+    environment:
+      - POSTGRES_PASSWORD=example
+    volumes:
+      - ./data:/var/lib/postgresql/data
+    ports:
+      - 5432:5432
+
